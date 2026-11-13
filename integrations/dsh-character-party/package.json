@@ -1,0 +1,22 @@
+{
+  "name": "dsh-character-party",
+  "version": "0.3.0",
+  "description": "Persistent character identities, shared project memory and native DSH agent task routing.",
+  "type": "module",
+  "main": "src/index.mjs",
+  "exports": "./src/index.mjs",
+  "files": [
+    "src",
+    "public",
+    "docs",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "check": "node --check src/index.mjs && node --check src/party.mjs && node --check src/dsh-adapter.mjs && node --check public/party.js && node --check src/model-config.mjs && node --check src/api-adapter.mjs && node --check src/api-sources.mjs && node --check public/model-settings.js && node --check src/http-origin.mjs && node --check src/model-test.mjs && node --check src/native-workers.mjs && node --check src/superagent.mjs && node --check src/workbuddy.mjs && node --check public/superagent.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "UNLICENSED"
+}

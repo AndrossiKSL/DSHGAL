@@ -1,0 +1,62 @@
+# dsh-whale-galgame bundle patch: inserts the plugin into the DSH Web bundle.
+- insert:
+    - id: ui-whale-galgame
+      name: 'dsh-whale-galgame'
+      config:
+        enabled: true
+        # Optional: set a DashScope API key locally to enable level-up CG generation.
+        # Never commit a real key to this file.
+        dashscopeBaseUrl: 'https://dashscope.aliyuncs.com'
+        dashscopeApiKey: ''
+        dashscopeModel: 'qwen-image-3.0'
+        dashscopeSize: '1920*1080'
+        # 小剧场联网检索的时效窗口（天）。只影响取材新鲜度，不改变发出的内容。
+        sideStoryRecencyDays: 14
+        # 小剧场两场之间的冷却，单位分钟。设为 0 则不限制。
+        sideStoryCooldownMinutes: 30
+        # 独立 GAL 页面：在 http://127.0.0.1:9988 另起一个只监听回环、只接受本机
+        # 同源请求的小页面，用同一份浏览器端代码单独开游戏窗口（不再占用对话标签）。
+        # 端口被占用时只记日志、不影响插件本身；设为 0 则完全不启动。
+        # standalonePort: 9988
+
+        # Default galgame dialogue route. Set chatModel to '' to follow the
+        # active workspace model instead.
+        chatProvider: 'deepseek-official'
+        chatModel: 'deepseek-v4-flash'
+
+        # ---- image generation (立绘 / 背景 / CG) ------------------------------
+        # auto = ComfyUI（直连或 SSH 隧道）→ dsh-gal-ds 生成桥 → DashScope，
+        # 取第一个可用的；off = 关掉所有生成按钮。
+        imageBackend: 'auto'
+        # 本地或可直连的 ComfyUI。远端实例走 SSH 隧道时这里不通也没关系。
+        comfyBaseUrl: 'http://127.0.0.1:8188'
+        # 远端 ComfyUI 在 SSH 主机上的监听地址（隧道目标）。
+        comfyRemoteHost: '127.0.0.1'
+        comfyRemotePort: 8188
+        # 底模与鲸鱼娘专属 LoRA；留空 comfyLora 则不加载角色 LoRA。
+        comfyCkpt: 'animaV1TurboAIO_v31.safetensors'
+        comfyLora: 'deepseek_whale_girl_maid_anima_lora_clean.safetensors'
+        comfyLoraWeight: 0.9
+        # 打开 NSFW 后才追加的增强 LoRA。
+        comfyLoraNsfw: 'ZITnsfwLoRAv3.safetensors'
+        comfyLoraNsfwWeight: 0.7
+        comfySteps: 8
+        comfyCfg: 2
+        comfySampler: 'euler'
+        comfyScheduler: 'simple'
+        # 去背景节点名，必须和 ComfyUI 里装的一致（透明立绘靠它）。
+        comfyRembgNode: 'Image Rembg (Remove Background)'
+        # dsh-gal-ds 的生成桥（python tools/dsh_gal_bridge.py --port 8765）。
+        bridgeUrl: 'http://127.0.0.1:8765'
+        # Agnes AI（OpenAI images 兼容）。key 也可用环境变量 AGNES_API_KEY 提供，
+        # 那样就不必写进任何文件。模型：agnes-image-2.5-flash / 2.1 / 2.0。
+        agnesApiKey: ''
+        agnesBaseUrl: 'https://apihub.agnes-ai.com/v1'
+        agnesModel: 'agnes-image-2.5-flash'
+        agnesSize: '1K'
+        # 仙宫云 SSH 配置；环境变量 XG_CONFIG 优先。与 dsh-gal-ds 共用同一份。
+        sshConfigPath: ''
+        # NSFW 素材：默认关。关着时即使点了 NSFW 也不会加增强 LoRA。
+        imageNsfwEnabled: false
+        # 每 N 句回复自动出一张图（0 = 关）。开启后有 10 分钟冷却。
+        autoCgEveryRounds: 0

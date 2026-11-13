@@ -1,0 +1,1 @@
+export const CAST=Object.entries({deepseek:'鲸鱼娘',claude:'克洛德',chatgpt:'小吉',gemini:'双子',kimi:'月见',grok:'洛可',glm:'墨岚',qwen:'千翎',minimax:'螺音',seed:'星豆',llama:'茸茸',mistral:'薇尔',hunyuan:'元清',mimo:'米兔',stepfun:'星阶',perplexity:'佩丝',rwkv:'青薇',image2:'玄羽',jev:'杰芙',wenxin:'温言',codex:'砚雪',comfyui:'霓霓'}).map(([id,name])=>({id,name}))

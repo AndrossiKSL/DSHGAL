@@ -1,0 +1,123 @@
+{
+  "name": "dsh-whale-galgame",
+  "description": "Standalone anime visual novel frontend with DSH and optional Hermes agent backends.",
+  "version": "2.2.4",
+  "type": "module",
+  "main": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./client": "./dist/client.js",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ],
+      "platform": "web",
+      "immediately": true
+    }
+  },
+  "scripts": {
+    "build": "node scripts/embed-art.mjs && node scripts/prepare-media.mjs && tsdown",
+    "prepare": "node scripts/prepare.mjs",
+    "embed:art": "node scripts/embed-art.mjs",
+    "audit:release": "node scripts/audit-public.mjs",
+    "check": "node --check dist/index.js && node --check dist/client.js && node --check dist/standalone-runtime.js && node --check apps/standalone/server.mjs && node --check deploy/install.mjs && node --check apps/desktop/main.mjs && node --check electron-builder.cjs && node --check apps/desktop/preload.cjs",
+    "test": "node --test test/*.test.mjs",
+    "verify": "npm run build && npm run check && npm test && npm run test:workshop && npm run audit:release",
+    "start": "node apps/standalone/server.mjs",
+    "import:art": "node scripts/sync-art-pack.mjs",
+    "package:share": "node scripts/package-share.mjs",
+    "deploy": "node deploy/install.mjs",
+    "test:workshop": "node --test integrations/dsh-character-party/test/*.test.mjs",
+    "desktop": "electron apps/desktop",
+    "package:desktop": "npm run build && electron-builder --config electron-builder.cjs --win portable --x64 --publish never",
+    "credits": "node scripts/collect-third-party.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AndrossiKSL/DSHGAL.git"
+  },
+  "homepage": "https://github.com/AndrossiKSL/DSHGAL#readme",
+  "bugs": {
+    "url": "https://github.com/AndrossiKSL/DSHGAL/issues"
+  },
+  "keywords": [
+    "deepseek",
+    "deepseek-harness",
+    "dsh-plugin",
+    "galgame",
+    "visual-novel",
+    "desktop-pet"
+  ],
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "files": [
+    "apps/standalone",
+    "assets/default",
+    "assets/packs",
+    "build",
+    "dist/*.js",
+    "src",
+    "test",
+    "scripts/art-manifest.mjs",
+    "scripts/embed-art.mjs",
+    "scripts/prepare-media.mjs",
+    "scripts/sync-art-pack.mjs",
+    "scripts/sync-signal-ui.mjs",
+    "scripts/audit-public.mjs",
+    "scripts/webp.mjs",
+    "docs/art-import.json",
+    "docs/STANDALONE.md",
+    "docs/REVIEW-2.2.md",
+    "docs/ASSET-LICENSES.md",
+    "cordis.patch.yml",
+    "LICENSE.md",
+    "NOTICE.md",
+    "THIRD_PARTY_LICENSES.md",
+    "README*.md",
+    "SECURITY.md",
+    "tsdown.config.ts",
+    "scripts/import-persona-cards.mjs",
+    "deploy",
+    "AGENTS.md",
+    "DEPLOY_WITH_AGENT.md",
+    "assets/README.md",
+    "docs/ARCHITECTURE.md",
+    "docs/ASSET-SYNC.md",
+    "integrations/dsh-character-party",
+    "scripts/package-share.mjs",
+    "scripts/package-plugin.mjs",
+    "scripts/prepare.mjs",
+    "scripts/release-files.mjs",
+    "start.cmd",
+    "start.sh",
+    ".editorconfig",
+    ".gitattributes",
+    "apps/desktop",
+    "electron-builder.cjs",
+    "docs/DESKTOP.md",
+    "third_party",
+    "CREDITS.md",
+    "docs/UPDATING.md",
+    "docs/PUBLISHING.md",
+    "docs/media",
+    "scripts/collect-third-party.mjs"
+  ],
+  "license": "SEE LICENSE IN LICENSE.md",
+  "devDependencies": {
+    "electron": "45.3.1",
+    "electron-builder": "26.18.0",
+    "lightningcss": "^1.32.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tsdown": "0.22.14"
+  }
+}

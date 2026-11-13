@@ -1,0 +1,36 @@
+import React from 'react'
+import {FolioStyles,ControlTrim,ChapterCrest} from './folio-ui'
+import {CropFigure,CropControls,AtelierEmpty} from './signal-experience'
+const h=React.createElement
+const paths:Record<string,string>={
+ search:'M10 3a7 7 0 1 0 0 14 7 7 0 0 0 0-14Zm5 12 6 6',
+ ensemble:'M9 3a3 3 0 1 0 0 6 3 3 0 0 0 0-6ZM3 20v-4a6 6 0 0 1 12 0v4M17 4a3 3 0 0 1 0 6M18 13c3 0 4 2 4 5v2',
+ resume:'m9 5 11 7-11 7Z',save:'M5 3h12l4 4v14H3V3ZM7 3v6h10V3M7 21v-8h10v8',load:'M3 7h7l2 2h9l-3 11H3ZM3 7V4h7l2 3',settings:'M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8ZM9 3h6l1 3 3 1 2 5-2 5-3 1-1 3H9l-1-3-3-1-2-5 2-5 3-1Z',
+ gallery:'M3 5h18v14H3ZM3 16l6-6 5 5 3-3 4 4M16 8h.1',atlas:'M3 5c4-2 6-1 9 1 3-2 5-3 9-1v14c-4-2-6-1-9 1-3-2-5-3-9-1ZM12 6v14',
+ journal:'M12 20S3 14 3 8a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6-9 12-9 12Z',worlds:'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18ZM3 12h18M12 3c-5 5-5 13 0 18 5-5 5-13 0-18Z',
+ tree:'M12 3v8M5 17v-6h14v6M3 17h4v4H3ZM17 17h4v4h-4ZM10 3h4v4h-4Z',catalog:'M6 4h14v17H6ZM3 7h3M3 12h3M3 17h3M10 8h6M10 12h6M10 16h4',
+ endings:'M8 3h8v7a4 4 0 0 1-8 0ZM8 5H4v3a5 5 0 0 0 4 5M16 5h4v3a5 5 0 0 1-4 5M12 14v6M7 21h10',classic:'M5 3h14v18H5ZM8 7h8M8 11h8M8 15h5',
+ assets:'m12 3 9 5v9l-9 5-9-5V8ZM3 8l9 5 9-5M12 13v9M7 5l10 6',editor:'m4 17 12-12 4 4L8 21H4ZM13 8l4 4M4 4h5M4 4v5M20 16v5h-5',
+ title:'m3 11 9-8 9 8M5 10v11h14V10M9 21v-7h6v7',exit:'M10 3H4v18h6M9 12h12m-5-5 5 5-5 5',clock:'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18ZM12 7v5l4 2',
+ affection:'M12 20S3 14 3 8a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6-9 12-9 12Z',trust:'m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6ZM8 12l3 3 5-6',intimacy:'M9 8a4 4 0 1 0 0 8h6a4 4 0 1 0 0-8M9 12h6',nsfw:'M17 3a9 9 0 1 0 4 13 8 8 0 0 1-4-13Z',
+ arrow:'m9 5 7 7-7 7',close:'m6 6 12 12M18 6 6 18'
+}
+export function DetailIcon({id}:any):any{return h('svg',{viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:1.35,strokeLinecap:'round',strokeLinejoin:'round','aria-hidden':true},h('path',{d:paths[id]||paths.atlas}))}
+const groups=[
+ {title:'旅程',en:'JOURNEY',rows:[['resume','继续游戏','CONTINUE'],['save','保存进度','SAVE GAME'],['load','读取存档','LOAD GAME'],['settings','环境设置','SYSTEM']]},
+ {title:'故事与牵绊',en:'STORY & BONDS',rows:[['worlds','世界线','WORLDLINES'],['ensemble','工坊同伴','COMPANIONS'],['journal','关系与约定','BONDS & PROMISES'],['tree','剧情树','STORY FLOW'],['catalog','故事目录','CHAPTERS'],['classic','经典剧本','CLASSIC STORIES']]},
+ {title:'收藏与创作',en:'COLLECTION & STUDIO',rows:[['gallery','回想鉴赏','MEMORIES'],['atlas','素材图集','ART LIBRARY'],['endings','结局图鉴','ENDINGS'],['assets','资产管理与生成','ASSET STUDIO'],['editor','场景编辑器','SCENE EDITOR']]}
+]
+export function SignalDetailMenu({onSelect,exitLabel="返回聊天"}:any):any{
+ return h('div',{className:'detail-menu'},h(FolioStyles),h('div',{className:'detail-menu-columns'},...groups.map((g,i)=>h('section',{key:g.en,className:'detail-menu-group'},h('h3',null,h('i',{'aria-hidden':true},'0'+(i+1)),g.title,h('small',null,g.en),h(ChapterCrest)),...g.rows.map(([id,label,en])=>h('button',{key:id,type:'button',className:'detail-menu-entry','data-destination':id,onClick:()=>onSelect(id)},h(ControlTrim),h('span',{className:'detail-entry-icon'},h(DetailIcon,{id})),h('span',{className:'detail-entry-copy'},h('b',null,label),h('small',null,en)),h(DetailIcon,{id:'arrow'})))))),h('div',{className:'detail-menu-bottom'},...([['title','返回标题'],['exit',exitLabel]]).map(([id,label])=>h('button',{key:id,type:'button',onClick:()=>onSelect(id)},h(ControlTrim),h(DetailIcon,{id}),label))))
+}
+export function SignalDetailAtlas({actions,role,setRole,name,media,onAssets,onImage,skins}:any):any{
+ const[crop,setCrop]=React.useState('full'),[category,setCategory]=React.useState('all'),[query,setQuery]=React.useState(''),[selected,setSelected]=React.useState('')
+ const active=actions[role]?role:'deepseek',skin=skins[active]?active:'deepseek',entries=Object.entries(actions[active]||{}),isPose=(id:string,label:string)=>/neutral|attentive|explain|thinking|迎接|倾听|说明/.test(id+' '+label)
+ const filtered=entries.filter(([id,f]:any)=>(category==='all'||(category==='pose')===isPose(id,f.label))&&String(f.label+' '+id).toLowerCase().includes(query.trim().toLowerCase())),viewerRows=filtered.map(([id,f]:any)=>({id,type:'action',url:f.url,label:name(active)+' · '+f.label}))
+ React.useEffect(()=>{setSelected('');setQuery('');setCategory('all')},[active])
+ const keys=(e:any)=>{const targets=[...e.currentTarget.querySelectorAll('.detail-action-card')]as HTMLElement[],i=targets.indexOf(document.activeElement as HTMLElement),cols=getComputedStyle(e.currentTarget).gridTemplateColumns.split(' ').length;let n=i;if(e.key==='ArrowRight')n++;else if(e.key==='ArrowLeft')n--;else if(e.key==='ArrowDown')n+=cols;else if(e.key==='ArrowUp')n-=cols;else if(e.key==='Home')n=0;else if(e.key==='End')n=targets.length-1;else return;e.preventDefault();targets[Math.max(0,Math.min(targets.length-1,n))]?.focus()}
+ return h('div',{className:'signal-atlas detail-atlas exp-atlas'},h(FolioStyles),h('div',{className:'detail-atlas-toolbar'},h('label',{className:'detail-role-select'},h('span',null,'选择角色'),h('select',{'aria-label':'图集角色',value:active,onChange:(e:any)=>setRole(e.target.value)},...Object.keys(actions).map(id=>h('option',{key:id,value:id},name(id))))),h('label',{className:'exp-atlas-search'},h(DetailIcon,{id:'search'}),h('input',{type:'search','aria-label':'搜索动作',placeholder:'搜索动作…',value:query,onChange:(e:any)=>setQuery(e.target.value)})),h('button',{type:'button',className:'system-action detail-studio-link',onClick:onAssets},h(ControlTrim),h(DetailIcon,{id:'assets'}),'资产管理与生成')),
+ h('div',{className:'exp-atlas-options'},h('div',{className:'exp-category-controls',role:'group','aria-label':'动作分类'},...([['all','全部动作'],['pose','互动姿态'],['emotion','情绪变化']]).map(([id,label])=>h('button',{type:'button',key:id,'aria-pressed':category===id,onClick:()=>setCategory(id)},label))),h(CropControls,{value:crop,onChange:setCrop}),h('span',{className:'detail-atlas-count'},filtered.length+' / '+entries.length+' 个动作')),
+ h('div',{className:'folio-atlas-scroll',key:active+':'+category+':'+query},!filtered.length?h(AtelierEmpty,{title:'没有找到对应动作',detail:'试试其他关键词，或翻回全部动作。',action:'显示全部',onAction:()=>{setQuery('');setCategory('all')}}):h('div',{className:'detail-action-grid','data-view':crop,onKeyDown:keys},...filtered.map(([id,f]:any,i)=>h('button',{type:'button',className:'detail-action-card',key:active+'-'+id,'aria-label':'查看'+name(active)+' · '+f.label,'aria-pressed':selected===id,'data-gallery-character':skin,style:{'--action-name-ink':skins[skin]?.nameInk||'#394967'}as any,onClick:()=>{setSelected(id);onImage({...viewerRows[i],rows:viewerRows,index:i,crop})}},h('img',{className:'detail-action-backing',src:media('assets/characters/'+skin+'/collection/panel.png'),alt:''}),h('span',{className:'detail-action-picture'},h(CropFigure,{url:f.url,mode:crop,alt:f.label})),h('img',{className:'detail-action-frame',src:media('assets/characters/'+skin+'/collection/frame_normal.png'),alt:''}),h('span',{className:'detail-action-index','aria-hidden':true},String(i+1).padStart(2,'0')),h('b',{className:'detail-action-label'},f.label),selected===id?h('span',{className:'exp-card-selected','aria-hidden':true},'◆'):null)))),h('p',{className:'signal-note detail-atlas-note'},'选择素材查看大图；方向键浏览，查看范围可切换全身、半身与表情。'))
+}

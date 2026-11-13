@@ -1,0 +1,16 @@
+node_modules/
+src/client/art.generated.ts
+*.log
+
+.local/
+DSHGAL-data/
+.env
+.env.*
+!.env.example
+*.tgz
+*.zip
+dist/*.map
+releases/
+
+artifacts/
+assets/source/

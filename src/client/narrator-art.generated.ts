@@ -1,0 +1,2 @@
+/* Original SVG layers embedded for both GAL hosts. */
+export const NARRATOR_ART={"frame": "/whale-galgame-media/embedded/d9df9ad3a39376d71552a6d4031bdf9a03b4b07dc5ccb10534d75abac47ff81a.svg", "panel": "/whale-galgame-media/embedded/f3aaa858c4a99a8a571455d59cb1495b0fc47886e03aa75911f3ce7124d9dd25.svg", "mobileFrame": "/whale-galgame-media/embedded/bc4c94d3d6000a4453379d102226f01537c01496e5feb4b8de3d6589f4947d4e.svg", "mobilePanel": "/whale-galgame-media/embedded/1813a0dbe383ba6354bceaa30eec4bf807ce3184908fd101b38f5c8fb8e60cb2.svg"} as const

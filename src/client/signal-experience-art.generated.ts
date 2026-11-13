@@ -1,0 +1,1 @@
+export const KEEPSAKE_TICKET="/whale-galgame-media/embedded/fbdf0bc8970e098d03124f1cdf2eeab123eb3654f77afa8099d25114251b417c.png"

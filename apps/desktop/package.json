@@ -1,0 +1,6 @@
+{
+  "name": "dshgal-desktop",
+  "version": "2.2.4",
+  "type": "module",
+  "main": "main.mjs"
+}

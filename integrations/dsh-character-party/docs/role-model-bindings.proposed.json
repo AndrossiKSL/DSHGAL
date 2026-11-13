@@ -1,0 +1,268 @@
+{
+  "status": "matching-suggestions-user-profiles-are-authoritative",
+  "checkedDate": "2026-11-09",
+  "source": "https://opencode.ai/inference/go/v1/models",
+  "publicCatalogCount": 30,
+  "rules": {
+    "roleFamilyIsSuggestion": true,
+    "userMayChooseAnyCatalogModel": true,
+    "dailyMayUseOneCommonModel": true,
+    "taskSpecificOverridesAllowed": true,
+    "silentCrossFamilyFallback": false,
+    "storyUsesActiveProfile": true,
+    "publicCatalogDoesNotProveAccountAccess": true
+  },
+  "roles": [
+    {
+      "roleId": "deepseek",
+      "family": "DeepSeek",
+      "candidateProvider": "opencode-go",
+      "candidateModels": [
+        "deepseek-v4.1-flash",
+        "deepseek-v4-pro"
+      ],
+      "initialDuties": [
+        "router",
+        "reasoning",
+        "review"
+      ],
+      "status": "public-catalog-match",
+      "accountAccessVerified": false
+    },
+    {
+      "roleId": "claude",
+      "family": "Claude",
+      "candidateProvider": "opencode-go",
+      "candidateModels": [
+        "claude-haiku-5-5"
+      ],
+      "initialDuties": [
+        "light-review",
+        "documentation"
+      ],
+      "status": "public-catalog-match",
+      "accountAccessVerified": false
+    },
+    {
+      "roleId": "chatgpt",
+      "family": "GPT",
+      "candidateProvider": "opencode-go",
+      "candidateModels": [
+        "gpt-6-luna",
+        "gpt-5.6-luna"
+      ],
+      "initialDuties": [
+        "focused-code",
+        "high-volume"
+      ],
+      "status": "public-catalog-match",
+      "accountAccessVerified": false
+    },
+    {
+      "roleId": "gemini",
+      "family": "Gemini",
+      "candidateProvider": "opencode-go",
+      "candidateModels": [
+        "gemini-4-argon"
+      ],
+      "initialDuties": [
+        "frontend",
+        "complex-engineering"
+      ],
+      "status": "public-catalog-match",
+      "accountAccessVerified": false
+    },
+    {
+      "roleId": "kimi",
+      "family": "Kimi",
+      "candidateProvider": "opencode-go",
+      "candidateModels": [
+        "kimi-k3.1-pro",
+        "kimi-k3",
+        "kimi-k2.7-code"
+      ],
+      "initialDuties": [
+        "repository-code",
+        "long-context"
+      ],
+      "status": "public-catalog-match",
+      "accountAccessVerified": true,
+      "verification": "Short text connection test; Kimi also completed native read and structured_output"
+    },
+    {
+      "roleId": "grok",
+      "family": "Grok",
+      "candidateProvider": "opencode-go",
+      "candidateModels": [
+        "grok-4.7"
+      ],
+      "initialDuties": [
+        "research-with-tools",
+        "long-running-work"
+      ],
+      "status": "public-catalog-match",
+      "accountAccessVerified": true,
+      "verification": "Short text connection test; Kimi also completed native read and structured_output"
+    },
+    {
+      "roleId": "glm",
+      "family": "GLM",
+      "candidateProvider": "opencode-go",
+      "candidateModels": [
+        "glm-5.3-flash",
+        "glm-5.3",
+        "glm-5.2"
+      ],
+      "initialDuties": [
+        "efficient-code",
+        "implementation"
+      ],
+      "status": "public-catalog-match",
+      "accountAccessVerified": false
+    },
+    {
+      "roleId": "qwen",
+      "family": "Qwen",
+      "candidateProvider": "opencode-go",
+      "candidateModels": [
+        "qwen3.8-max",
+        "qwen3.8-flash",
+        "qwen3.7-plus"
+      ],
+      "initialDuties": [
+        "structured-work",
+        "implementation"
+      ],
+      "status": "public-catalog-match",
+      "accountAccessVerified": true,
+      "verification": "Short text connection test; Kimi also completed native read and structured_output"
+    },
+    {
+      "roleId": "minimax",
+      "family": "MiniMax",
+      "candidateProvider": "opencode-go",
+      "candidateModels": [
+        "minimax-m3.1-flash",
+        "minimax-m3"
+      ],
+      "initialDuties": [
+        "multimodal-code",
+        "implementation"
+      ],
+      "status": "public-catalog-match",
+      "accountAccessVerified": false
+    },
+    {
+      "roleId": "hunyuan",
+      "family": "Hunyuan",
+      "candidateProvider": "opencode-go",
+      "candidateModels": [
+        "hy4",
+        "hy4-preview",
+        "hy3"
+      ],
+      "initialDuties": [
+        "multimodal-work"
+      ],
+      "status": "public-catalog-match",
+      "accountAccessVerified": true,
+      "verification": "Short text connection test; Kimi also completed native read and structured_output"
+    },
+    {
+      "roleId": "mimo",
+      "family": "MiMo",
+      "candidateProvider": "opencode-go",
+      "candidateModels": [
+        "mimo-v2.6-flash",
+        "mimo-v2.6-pro"
+      ],
+      "initialDuties": [
+        "efficient-code",
+        "automation"
+      ],
+      "status": "public-catalog-match",
+      "accountAccessVerified": false
+    },
+    {
+      "roleId": "stepfun",
+      "family": "Step",
+      "candidateProvider": "opencode-go",
+      "candidateModels": [
+        "step-5-preview"
+      ],
+      "initialDuties": [
+        "multimodal-work",
+        "professional-work"
+      ],
+      "status": "public-catalog-match",
+      "accountAccessVerified": false
+    },
+    {
+      "roleId": "seed",
+      "family": "Seed",
+      "candidateModels": [],
+      "status": "needs-matching-provider",
+      "accountAccessVerified": false
+    },
+    {
+      "roleId": "llama",
+      "family": "Llama",
+      "candidateModels": [],
+      "status": "needs-matching-provider",
+      "accountAccessVerified": false
+    },
+    {
+      "roleId": "mistral",
+      "family": "Mistral",
+      "candidateModels": [],
+      "status": "needs-matching-provider",
+      "accountAccessVerified": false
+    },
+    {
+      "roleId": "perplexity",
+      "family": "Perplexity",
+      "candidateModels": [],
+      "status": "needs-matching-provider",
+      "accountAccessVerified": false
+    },
+    {
+      "roleId": "rwkv",
+      "family": "RWKV",
+      "candidateModels": [],
+      "status": "needs-matching-provider",
+      "accountAccessVerified": false
+    },
+    {
+      "roleId": "wenxin",
+      "family": "ERNIE",
+      "candidateModels": [],
+      "status": "needs-matching-provider",
+      "accountAccessVerified": false
+    },
+    {
+      "roleId": "codex",
+      "family": "Codex",
+      "candidateModels": [],
+      "status": "needs-matching-provider",
+      "accountAccessVerified": false
+    },
+    {
+      "roleId": "image2",
+      "family": "image-generation",
+      "status": "tool-role-needs-image-provider",
+      "candidateModels": []
+    },
+    {
+      "roleId": "comfyui",
+      "family": "ComfyUI",
+      "status": "tool-role-needs-explicit-planner-and-workflow",
+      "candidateModels": []
+    },
+    {
+      "roleId": "jev",
+      "family": "custom-character",
+      "status": "needs-explicit-binding",
+      "candidateModels": []
+    }
+  ]
+}

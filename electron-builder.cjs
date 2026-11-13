@@ -1,0 +1,17 @@
+module.exports={
+ appId:'org.dshgal.desktop',
+ productName:'DSHGAL',
+ executableName:'DSHGAL',
+ extraMetadata:{name:'dshgal-desktop',main:'apps/desktop/main.mjs'},
+ directories:{output:process.env.DSHGAL_DESKTOP_OUTPUT||'artifacts/desktop',buildResources:'apps/desktop'},
+ files:['apps/desktop/**','apps/standalone/**','dist/**','assets/default/**','assets/packs/**','third_party/**','CREDITS.md','package.json','LICENSE.md','NOTICE.md','THIRD_PARTY_LICENSES.md','docs/DESKTOP.md','docs/UPDATING.md','!third_party/runtime/**','!**/DSHGAL-data/**','!**/.local/**','!**/*.map'],
+ extraResources:[{from:'third_party/runtime',to:'licenses'}],
+ asar:true,
+ compression:'normal',
+ npmRebuild:false,
+ electronDist:'node_modules/electron/dist',
+ electronLanguages:['zh-CN','en-US'],
+ win:{target:[{target:'portable',arch:['x64']}],icon:'assets/packs/signal/assets/labels/game-logo.png',signAndEditExecutable:true,signExecutable:false,requestedExecutionLevel:'asInvoker'},
+ portable:{artifactName:'DSHGAL-${version}-Portable.exe',requestExecutionLevel:'user'},
+ publish:null
+}

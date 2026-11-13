@@ -1,0 +1,13 @@
+{
+  "family": "Atelier Serif UI",
+  "upstream": "Noto Serif SC",
+  "source": "https://github.com/google/fonts/tree/main/ofl/notoserifsc",
+  "license": "SIL Open Font License 1.1",
+  "method": "Subset of installed NotoSerifSC-VF.ttf; renamed for local UI use",
+  "glyphCount": 794,
+  "weights": [
+    400,
+    650
+  ],
+  "coverage": "All 22 character skins, atlas crops, keepsakes, save previews and UI feedback"
+}
